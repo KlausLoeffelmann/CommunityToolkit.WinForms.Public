@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+	<TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Vsxmd" Version="1.4.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+	<PropertyGroup>
+		<DocumentationMarkdown>$(MSBuildProjectDirectory)..\..\..\docs\CommunityToolkit.WinForms.Extensions.FormsAndControlExtension\reference.md</DocumentationMarkdown>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+    <ProjectReference Include="..\CommunityToolkit.DesktopGeneric.Mvvm\CommunityToolkit.WinForms.DesktopGeneric.Mvvm.csproj" />
+    <ProjectReference Include="..\CommunityToolkit.WinForms.ComponentModel\CommunityToolkit.WinForms.ComponentModel.csproj" />
+  </ItemGroup>
+
+</Project>

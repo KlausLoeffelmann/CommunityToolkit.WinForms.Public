@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CodeBlockAddendum" xml:space="preserve">
+    <value>Important:
+* If the response will include code-blocks (or even plain-text listings), we need to first send out a couple of meta-information data,
+   like for example `{{[0]:c#}}` and `{{[1]:FrmSuperForm.cs}}`. 
+   So, the general structure of code-blocks in that case is
+
+      {{[0]:c#}}{{[1]:FrmSuperForm.cs}}{{[2]:ViewModel class for managing Employees, implementing `INotifyPropertyChanged`}}
+      ```codeBlockType
+      // Here comes the actual code block
+      ```
+  It is important to keep the order Meta Data first, then the actual code-block, because otherwise the Meta data tags would become
+  part of the code-block, and that must not happen. So:
+
+* When ever a code-block is ready to be generated...
+  - Add a parameter marker from curly-brace pairs, defining the `[0]` like `{{[0]:c#}}` or `{{[0]:vb}}` or `{{[0]:plaintext}}` or `{{[0]:batch}}`.
+  - Have this followed by the `[1]` with a meaningful Filename for the code-block, like `{{[1]:FrmSuperForm.cs}}` or `{{[1]:MySuperModule.vb}}`
+  - Then, with `[2]`. include a max. 50 chars long, brief description of the code like this sample:
+    `{{[2]:ViewModel class for managing Employees, implementing `INotifyPropertyChanged`}}`
+  - Only then, start the code-block with ```[CodeBlockType], for example ```C# or ```Visual Basic or ```Python.
+  - After the code-block's tokens have been all sent out, always end a code-block with ``` , following a new line.
+</value>
+  </data>
+  <data name="Prompt_RequestChatSummary" xml:space="preserve">
+    <value>Please write a Summary of this conversation. The Summary should not have more than 4000 characters, but it can have (even much) less characters, if it makes sense. </value>
+  </data>
+  <data name="Prompt_RequestConversationTitle" xml:space="preserve">
+    <value>Please provide a title for the following conversation.</value>
+  </data>
+  <data name="Prompt_RequestKeywords" xml:space="preserve">
+    <value>Please provide {0} keywords for the following conversation. 
+Try to find the keywords in such a way that they become increasingly specific/concrete from original rather generalized.</value>
+  </data>
+  <data name="SystemPrompt_MetaInfo" xml:space="preserve">
+    <value>Today is {0}. It is {1}. 
+You are an assistant in an LLM Chat-Bot client software. 
+You're purpose is to provide certain meta information during a typical LLM chat with a user, like:
+
+* Writing chat summaries
+* Finding titles for chat topics
+* Finding short description for provided code snippets in technical discussions about software development.
+* Providing keywords for chat conversations.
+</value>
+  </data>
+</root>

@@ -1,0 +1,126 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<OutputType>Library</OutputType>
+    <TargetFramework>net9.0-windows10.0.22000.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TypeInputExtenders\Resources\CustomControl.bmp">
+      <LogicalName>CommunityToolkit.WinForms.TypedInputExtenders.CustomControl.bmp</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeInputExtenders\Resources\FormattedDateEntry.bmp">
+      <LogicalName>CommunityToolkit.WinForms.TypedInputExtenders.FormattedDateEntry.bmp</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeInputExtenders\Resources\FormattedDecimalEntry.bmp">
+      <LogicalName>CommunityToolkit.WinForms.TypedInputExtenders.FormattedDecimalEntry.bmp</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeInputExtenders\Resources\FormattedTextEntry.bmp">
+      <LogicalName>CommunityToolkit.WinForms.TypedInputExtenders.FormattedTextEntry.bmp</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeInputExtenders\Resources\MvvmView.bmp">
+      <LogicalName>CommunityToolkit.WinForms.TypedInputExtenders.MvvmView.bmp</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeInputExtenders\Resources\TypedInputExtender.bmp">
+      <LogicalName>CommunityToolkit.WinForms.TypedInputExtenders.TypedInputExtender.bmp</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Vsxmd" Version="1.4.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+    <PropertyGroup>
+	    <DocumentationMarkdown>$(MSBuildProjectDirectory)..\..\..\docs\CommunityToolkit.WinForms.FluentUI\reference.md</DocumentationMarkdown>
+	    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    </PropertyGroup>
+
+	<ItemGroup>
+	<ProjectReference Include="..\CommunityToolkit.WinForms.AI\CommunityToolkit.WinForms.AI.csproj" />
+	<ProjectReference Include="..\CommunityToolkit.WinForms.AsyncSupport\CommunityToolkit.WinForms.AsyncSupport.csproj" />
+    <ProjectReference Include="..\CommunityToolkit.WinForms.FormAndControlExtensions\CommunityToolkit.WinForms.Extensions.FormAndControlExtensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AITypedInputExtenders\AIDateFormatterComponent.AIDateFormatter.AIDateTimeParsingReturnValues.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="AITypedInputExtenders\AIDateFormatterComponent.AIDateFormatter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="AITypedInputExtenders\AIDateFormatterComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="AITypedInputExtenders\AIMeasurementFormatterComponent.AIMeasurementFormatter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="AITypedInputExtenders\AIMeasurementFormatterComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="AITypedInputExtenders\AITextFormatterComponent.AITextFormatter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="AITypedInputExtenders\AITextFormatterComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="AsyncGridView\AsyncDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="AsyncGridView\AsyncGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\AsyncButton\AsyncButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\AutoCompleteEditor\AutoCompleteEditor_IUsesSemanticKernelComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\FractionSlider\EditFloatingPointSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\FractionSlider\FloatingPointSlider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\FractionSlider\FloatingPointTrackBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\AsyncButton\FluentAsyncCommandButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\FluentFollowUpControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controls\SpinnerControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GridView\GridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="GridView\GridView_ShadowingBaseProperties.cs" />
+    <Compile Update="TypeInputExtenders\Formatter\DateFormatterComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="TypeInputExtenders\Formatter\DateFormatterComponent.DateFormatter.cs" />
+    <Compile Update="TypeInputExtenders\Formatter\DecimalFormatterComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="TypeInputExtenders\Formatter\DecimalFormatterComponent.DecimalFormatter.cs" />
+    <Compile Update="TypeInputExtenders\Formatter\TypedFormatterComponent.ValueConvertEventArgs.cs" />
+    <Compile Update="TypeInputExtenders\Formatter\TypedFormatterComponent`1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="TypeInputExtenders\TypedInputExtenderPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="TypeInputExtenders\TypedInputExtenderPanel.TypedInputExtenderProperties.cs" />
+  </ItemGroup>
+
+</Project>

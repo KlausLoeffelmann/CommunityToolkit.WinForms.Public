@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+     <!-- Mitigate the annoying WebView2 Assembly mismatch warning -->
+     <NoWarn>$(NoWarn);MSB3277;CS1591</NoWarn>
+  </PropertyGroup>
+</Project>

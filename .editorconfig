@@ -1,0 +1,47 @@
+﻿[*.cs]
+
+# WFO5001: Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
+dotnet_diagnostic.WFO5001.severity = silent
+
+# IDE0130: Namespace does not match folder structure
+dotnet_style_namespace_match_folder = false
+
+# .editorconfig sample for C# projects
+# Top-most EditorConfig file
+root = true
+
+# -------------------------------------------------------
+# VAR USAGE: Prefer explicit types instead of 'var' for all cases.
+# -------------------------------------------------------
+
+# For built-in types (e.g. int, string, etc.)
+csharp_style_var_for_built_in_types = false:warning
+
+# When the type is apparent from the right-hand side.
+csharp_style_var_when_type_is_apparent = true:suggestion
+
+# For all other cases.
+csharp_style_var_elsewhere = false:suggestion
+
+# -------------------------------------------------------
+# CODE-BLOCK ISOLATION AND BRACE STYLE: Options to improve readability.
+# -------------------------------------------------------
+
+# Separate using groups (e.g. system vs. non-system)
+dotnet_separate_import_directive_groups = true
+
+# Place opening braces on a new line for types, methods, accessors, and control blocks.
+csharp_new_line_before_open_brace_types = true
+csharp_new_line_before_open_brace_methods = true
+csharp_new_line_before_open_brace_accessors = true
+csharp_new_line_before_open_brace_control_blocks = true
+csharp_new_line_before_open_brace_anonymous_methods = true
+csharp_new_line_before_open_brace_lambdas = true
+
+# Indentation settings
+indent_style = space
+indent_size = 4
+
+# Trim trailing whitespace and insert final newline
+trim_trailing_whitespace = true
+insert_final_newline = true

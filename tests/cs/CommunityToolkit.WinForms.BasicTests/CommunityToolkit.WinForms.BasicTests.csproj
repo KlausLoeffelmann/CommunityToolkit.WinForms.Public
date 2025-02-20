@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.22000.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);COLLECT_TEST_DATA</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="TestData\Roslyn\CSharp\Class_with_every_member_type_relevant.cs" />
+    <Compile Remove="TestData\Roslyn\CSharp\Modernization\ToolStripDesigner.cs" />
+    <Compile Remove="TestData\Roslyn\CSharp\Modernization\ToolStripDesignerUtils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeRefactoring.Testing.XUnit" Version="1.1.2" />
+	  <PackageReference Include="coverlet.collector" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.SemanticKernel" Version="1.37.0" />
+	<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3065.39" />
+	<PackageReference Include="OpenAI" Version="2.2.0-beta.1" />
+	<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.11.1" />
+	<PackageReference Include="System.Text.Json" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\CommunityToolkit.WinForms.AI\CommunityToolkit.WinForms.AI.csproj" />
+    <ProjectReference Include="..\..\..\src\CommunityToolkit.WinForms.Roslyn\CommunityToolkit.Roslyn.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TestData\Roslyn\CSharp\Class_with_every_member_type_relevant.cs" />
+    <None Include="TestData\Roslyn\CSharp\Modernization\ToolStripDesigner.cs" />
+    <None Include="TestData\Roslyn\CSharp\Modernization\ToolStripDesignerUtils.cs" />
+  </ItemGroup>
+
+</Project>

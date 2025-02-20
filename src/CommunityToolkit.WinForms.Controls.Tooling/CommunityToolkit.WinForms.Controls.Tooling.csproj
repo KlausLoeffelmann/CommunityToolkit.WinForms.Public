@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.22000.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.12.0" />
+	<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Features" Version="4.12.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.12.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Features" Version="4.12.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" Version="4.12.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Features" Version="4.12.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces" Version="4.12.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.12.0" />
+    <PackageReference Include="System.Formats.Asn1" Version="9.0.2" />
+    <PackageReference Include="System.Text.Json" Version="9.0.2" />
+    <PackageReference Include="Vsxmd" Version="1.4.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+    <PropertyGroup>
+	    <DocumentationMarkdown>$(MSBuildProjectDirectory)..\..\..\docs\CommunityToolkit.WinForms.Controls.Tooling\reference.md</DocumentationMarkdown>
+	    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    </PropertyGroup>
+
+	<ItemGroup>
+    <ProjectReference Include="..\CommunityToolkit.WinForms.AsyncSupport\CommunityToolkit.WinForms.AsyncSupport.csproj" />
+    <ProjectReference Include="..\CommunityToolkit.WinForms.FluentUI\CommunityToolkit.WinForms.FluentUI.csproj" />
+    <ProjectReference Include="..\CommunityToolkit.WinForms.Roslyn\CommunityToolkit.Roslyn.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Roslyn\ProjectExplorer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Roslyn\RoslynDocumentView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,98 @@
+Below is an example of a C# command-line application that uses reflection to search for all types in System.Windows.Forms which either have a TypeEditorAttribute defined directly on the type or on any of its properties.
+
+The code is structured with modern practices including nullability awareness and collection initializers. Would you like to see a brief explanation of the parts, or should I go ahead and provide more details on the implementation?
+
+```csharp
+// *** File: Program.cs ***
+using System;
+using System.Collections.Generic;
+using System.Drawing.Design;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
+
+namespace WinFormsTypeEditorFinder
+{
+    /// <summary>
+    /// CLI application for finding types in System.Windows.Forms that are decorated with TypeEditorAttribute.
+    /// </summary>
+    public static class Program
+    {
+        /// <summary>
+        /// Application entry point.
+        /// </summary>
+        /// <param name="args">Command-line arguments.</param>
+        public static void Main(string[] args)
+        {
+            // Get the assembly that defines WinForms.
+            Assembly winFormsAssembly = typeof(Form).Assembly;
+            
+            // Get the attribute type to search for.
+            Type typeEditorAttributeType = typeof(TypeEditorAttribute);
+            
+            // List to hold the found information.
+            var results = new List<string>();
+
+            // Iterate all the types in the assembly.
+            foreach (Type? type in winFormsAssembly.GetTypes())
+            {
+                // Skip undefined types (shouldn't occur with GetTypes, but check for null in theory)
+                if (type is null)
+                {
+                    continue;
+                }
+
+                bool foundOnClass = type.IsDefined(typeEditorAttributeType, inherit: false);
+                var propertyMatches = new List<string>();
+
+                // Check properties even if we already found attribute on the type.
+                var properties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                foreach (PropertyInfo? prop in properties)
+                {
+                    if (prop is null)
+                    {
+                        continue;
+                    }
+                    if (prop.IsDefined(typeEditorAttributeType, inherit: false))
+                    {
+                        propertyMatches.Add(prop.Name);
+                    }
+                }
+
+                // If the attribute is found on the class itself or any property then collect the result.
+                if (foundOnClass || propertyMatches.Count > 0)
+                {
+                    string matchInfo = foundOnClass 
+                        ? $"[Class] {type.FullName}" 
+                        : $"[Type] {type.FullName}";
+                    if (propertyMatches.Count > 0)
+                    {
+                        // Append properties names.
+                        matchInfo += " { Properties: " + string.Join(", ", propertyMatches) + " }";
+                    }
+                    
+                    results.Add(matchInfo);
+                }
+            }
+
+            // Output results
+            Console.WriteLine($"Found types with {typeEditorAttributeType.Name}:");
+            if (results.Count == 0)
+            {
+                Console.WriteLine("No matches found.");
+            }
+            else
+            {
+                foreach (string result in results.OrderBy(s => s))
+                {
+                    Console.WriteLine(result);
+                }
+            }
+        }
+    }
+}
+```
+
+
+Would you like any further explanations or adjustments on how this implementation works?  
+

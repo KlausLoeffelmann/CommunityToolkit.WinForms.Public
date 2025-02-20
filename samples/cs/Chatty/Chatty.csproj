@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows10.0.22000.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Title>C.H.A.T.T.Y.</Title>
+    <Authors>Klaus Löffelmann</Authors>
+    <Company>Microsoft</Company>
+    <Product>Chirpy Hyper-Accelerated Tattle Toolbox Yapper</Product>
+  </PropertyGroup>
+
+	<Target Name="GenerateAssemblyInfoEx" BeforeTargets="CoreCompile">
+		<!-- Path for the generated code file -->
+		<PropertyGroup>
+			<GeneratedAssemblyInfoPath>$(IntermediateOutputPath)GeneratedAssemblyInfoEx.g.cs</GeneratedAssemblyInfoPath>
+		</PropertyGroup>
+
+		<!-- Write a single line of code that includes assembly-level metadata -->
+		<WriteLinesToFile File="$(GeneratedAssemblyInfoPath)" Lines="[assembly: System.Reflection.AssemblyMetadata(&quot;Authors&quot;, &quot;$(Authors)&quot;)]" Overwrite="true" />
+
+		<!-- Include the generated code file in your compilation -->
+		<ItemGroup>
+			<Compile Include="$(GeneratedAssemblyInfoPath)" AutoGen="True" DesignTime="False" DesignTimeSharedInput="False" />
+		</ItemGroup>
+	</Target>
+
+	<ItemGroup>
+	  <None Remove="Properties\ChattyBackground.rtf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Properties\ChattyBackground.rtf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\src\CommunityToolkit.WinForms.AI\CommunityToolkit.WinForms.AI.csproj" />
+	  <ProjectReference Include="..\..\..\src\CommunityToolkit.WinForms.AsyncSupport\CommunityToolkit.WinForms.AsyncSupport.csproj" />
+	  <ProjectReference Include="..\..\..\src\CommunityToolkit.WinForms.Controls.Tooling\CommunityToolkit.WinForms.Controls.Tooling.csproj" />
+	  <ProjectReference Include="..\..\..\src\CommunityToolkit.WinForms.ConversationView\CommunityToolkit.WinForms.ChatUI.csproj" />
+	  <ProjectReference Include="..\..\..\src\CommunityToolkit.WinForms.FluentUI\CommunityToolkit.WinForms.FluentUI.csproj" />
+	  <ProjectReference Include="..\..\..\src\CommunityToolkit.WinForms.Roslyn\CommunityToolkit.Roslyn.csproj" />
+	  <ProjectReference Include="..\AutoCompleteEditorTest\AutoCompleteEditorTest.csproj" />
+	</ItemGroup>
+
+</Project>

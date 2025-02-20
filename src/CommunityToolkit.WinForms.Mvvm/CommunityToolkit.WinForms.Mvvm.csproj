@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <OutputType>Library</OutputType>
+	  <TargetFramework>net9.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="Azure.Identity" Version="1.13.2" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.2" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.2" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.2" />
+	  <PackageReference Include="Microsoft.SemanticKernel" Version="1.37.0" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
+	  <PackageReference Include="OpenAI" Version="2.2.0-beta.1" />
+	  <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.11.1" />
+	  <PackageReference Include="System.Text.Json" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommunityToolkit.DesktopGeneric.Mvvm\CommunityToolkit.WinForms.DesktopGeneric.Mvvm.csproj" />
+    <ProjectReference Include="..\CommunityToolkit.WinForms.FormAndControlExtensions\CommunityToolkit.WinForms.Extensions.FormAndControlExtensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Components\PeriodicTimerComponent.cs" />
+    <Compile Update="Controls\BindableComboBox.cs" />
+  </ItemGroup>
+
+</Project>

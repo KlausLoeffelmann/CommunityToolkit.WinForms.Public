@@ -1,0 +1,128 @@
+﻿using Chatty.DataEntities;
+using CommunityToolkit.WinForms.Controls.Blazor;
+using System.Text;
+
+namespace Chatty.DataProcessing;
+
+internal class ConversationProcessor(Conversation conversation)
+{
+    public event EventHandler<ListingFileAddedEventArgs>? ListingFileAdded;
+
+    private readonly List<ListingFile> _textFiles = [];
+    private StringBuilder? _currentListingBuilder;
+    private string? _currentListingType;
+
+    public Conversation Conversation { get; } = conversation
+        ?? throw new ArgumentNullException(nameof(conversation));
+
+    public string? CurrentListingDescription { get; internal set; }
+
+    public string? CurrentListingFilename { get; internal set; }
+
+    public (string path, string filename) GetPathAndFilename(string basePath, bool createRespectivePath)
+    {
+        // Let's create a filename from the title and make sure,
+        // it doesn't have any invalid characters:
+        string title = Conversation.Title!;
+        string uniqueFilename = GenerateUniqueFilename(basePath, title, ".cjson");
+
+        DirectoryInfo directory = new(uniqueFilename);
+        string newBasePath = directory.FullName;
+
+        if (createRespectivePath)
+        {
+            // Let's create the folder, should it not exist:
+            Directory.CreateDirectory(newBasePath);
+        }
+
+        // Let's create the filename for the conversation:
+        return (newBasePath, $"{directory.Name}.cjson");
+
+        static string GenerateUniqueFilename(string basePath, string title, string? extension = default)
+        {
+            // Remove invalid characters from the title
+            string sanitizedTitle = string.Concat(title.Split(Path.GetInvalidFileNameChars()));
+            string fileName = sanitizedTitle;
+
+            if (string.IsNullOrWhiteSpace(fileName))
+            {
+                int counter = 1;
+
+                // Ensure the filename is unique
+                while (File.Exists(Path.Combine(basePath, fileName + extension)))
+                {
+                    fileName = $"{sanitizedTitle}_{counter}";
+                    counter++;
+                }
+            }
+
+            return Path.Combine(basePath, fileName + extension);
+        }
+    }
+
+    public async Task SaveConversationAsync()
+    {
+        // Let's open a file stream to write the conversation to:
+        using FileStream fileStream = new(
+                path: Conversation.Filename,
+                mode: FileMode.Create,
+                access: FileAccess.Write);
+
+        Conversation.WriteJSon(fileStream);
+        await fileStream.FlushAsync();
+    }
+
+    internal void HandleReceiveContentMetaData(string metaData, int textPosition)
+    {
+    }
+
+    internal void HandleNewParagraph(string basePath, string paragraph, int textPosition)
+    {
+        string trimmedParagraph = paragraph.Trim();
+
+        if (trimmedParagraph.StartsWith("```"))
+        {
+            // Handle listing start or end
+            if (trimmedParagraph.Length > 3 && _currentListingBuilder == null)
+            {
+                // This is a start of a new listing with a specific type
+                _currentListingType = trimmedParagraph[3..].Trim();
+                _currentListingBuilder = new StringBuilder();
+            }
+            else if (_currentListingBuilder != null)
+            {
+                // This is the end of the current listing
+                string listingContent = _currentListingBuilder.ToString();
+                var listingFile = new ListingFile(basePath, listingContent);
+                OnListingFileAdded(new(listingFile));
+
+                _currentListingBuilder = null;
+                _currentListingType = null;
+            }
+        }
+        else
+        {
+            // Add paragraph to the current listing
+            // Note: The paragraph is not trimmed, so we only Append
+            // to not add additional whitespace.
+            _currentListingBuilder?.Append(paragraph);
+        }
+    }
+
+    protected virtual void OnListingFileAdded(ListingFileAddedEventArgs e)
+        => ListingFileAdded?.Invoke(this, e);
+
+    internal static async Task<ConversationProcessor> FromFileAsync(string basePath, string filename)
+    {
+        // Just in case we still have the full path here from previous versions.
+        // TODO: Remove this in the future.
+        filename = Path.GetFileName(filename);
+        string folderName = Path.GetFileNameWithoutExtension(filename);
+        string folderPath = Path.Combine(basePath, folderName);
+
+        string json = await File.ReadAllTextAsync(Path.Combine(folderPath, filename));
+        var conversation = Conversation.FromJson(json);
+
+        return new ConversationProcessor(conversation);
+    }
+}

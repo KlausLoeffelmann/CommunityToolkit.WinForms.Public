@@ -1,0 +1,44 @@
+name: Build WinForms App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      # Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up .NET
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.x' # Adjust to the target .NET version of your WinForms app
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Build the solution (Release)
+      - name: Build solution (Release)
+        run: dotnet build --configuration Release --no-restore
+
+      # Build the solution (Debug)
+      - name: Build solution (Debug)
+        run: dotnet build --configuration Debug --no-restore
+
+      # Run unit tests (Release)
+      - name: Run unit tests (Release)
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      # Run unit tests (Debug)
+      - name: Run unit tests (Debug)
+        run: dotnet test --configuration Debug --no-build --verbosity normal

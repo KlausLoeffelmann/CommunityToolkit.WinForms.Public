@@ -1,0 +1,131 @@
+```markdown
+{{md-description: Document Title in Markdown}}
+# LLM Return Streams Testing Document
+
+{{md-description: Introduction Paragraph in Markdown}}
+Welcome to this **comprehensive demonstration** of multiple code block examples, each accompanied by explanatory text. Below you will find examples in **VB**, **C#**, plain-text (with cascaded Markdown formatting), **Batch Script**, and **Python**. Enjoy the tour!
+
+---
+
+{{md-description: VB Code Block Section Header in Markdown}}
+## VB Code Block Example
+
+{{md-description: Explanatory Paragraph Before VB Code in Markdown}}
+Below is a sample of a VB class that implements a simple calculator functionality. It includes XML comments and follows modern standards for clarity.
+
+```[ListingType]
+{{codetype:vb}}
+{{filename:MyAceMod.vb}}
+Public Class Calculator
+    ''' <summary>
+    ''' Adds two integers.
+    ''' </summary>
+    Public Function Add(a As Integer, b As Integer) As Integer
+        Return a + b
+    End Function
+End Class
+```
+{{summary: Simple VB Calculator class implementing an Add method}}
+
+{{md-description: Explanatory Paragraph After VB Code in Markdown}}
+The above VB code sample illustrates a highly readable and well-documented module that adheres to modern coding principles.
+
+---
+
+{{md-description: C# Code Block Section Header in Markdown}}
+## C# Code Block Example
+
+{{md-description: Explanatory Paragraph Before C# Code in Markdown}}
+Now, take a look at the following C# example. This sample code defines a calculator class with a multiplication method using expression-bodied members.
+
+```[ListingType]
+{{codetype:c#}}
+{{filename:Calculator.cs}}
+/// <summary>
+/// Provides calculation functionality.
+/// </summary>
+public class Calculator
+{
+    /// <summary>
+    /// Multiplies two integers.
+    /// </summary>
+    public int Multiply(int a, int b) => a * b;
+}
+```
+{{summary: Simple C# Calculator class with a Multiply method}}
+
+{{md-description: Explanatory Paragraph After C# Code in Markdown}}
+This C# snippet is concise yet expressive, incorporating inline XML documentation for improved maintainability.
+
+---
+
+{{md-description: Plain-Text Code Block Section Header in Markdown}}
+## Plain-Text Code Block with Cascaded Markdown Formatting
+
+{{md-description: Explanatory Paragraph Before Plain-Text Code in Markdown}}
+The following code block is a plain-text snippet that itself contains Markdown formatting. It shows how nested Markdown structures look when rendered.
+
+```[ListingType]
+{{codetype:plaintext}}
+{{filename:NestedMarkdown.txt}}
+# This is a Header inside a Plain-Text Block
+
+- **Bold Item:** This item is emphasized.
+- *Italic Item:* This item is styled in italics.
+- `Inline Code:` This represents a code snippet.
+```
+{{summary: Plain-text snippet demonstrating cascaded Markdown formatting}}
+
+{{md-description: Explanatory Paragraph After Plain-text Code in Markdown}}
+Such nested formatting can be particularly useful when documenting content that requires demonstration of raw Markdown syntax.
+
+---
+
+{{md-description: Batch Script Code Block Section Header in Markdown}}
+## Batch Script Code Block Example
+
+{{md-description: Explanatory Paragraph Before Batch Script Code in Markdown}}
+Below is an example of a Batch script, which simply prints a greeting and waits for key press before terminating.
+
+```[ListingType]
+{{codetype:batch}}
+{{filename:Greeting.bat}}
+@echo off
+REM This batch script displays a greeting message.
+echo Hello World!
+pause
+```
+{{summary: Batch script printing 'Hello World!' and pausing execution}}
+
+{{md-description: Explanatory Paragraph After Batch Script Code in Markdown}}
+This example illustrates a minimal batch file that can be expanded upon for more complex Windows scripting tasks.
+
+---
+
+{{md-description: Python Code Block Section Header in Markdown}}
+## Python Code Block Example
+
+{{md-description: Explanatory Paragraph Before Python Code in Markdown}}
+Lastly, here is a brief Python snippet. This code defines a simple greeting function with type hints and documentation, following modern Python conventions.
+
+```[ListingType]
+{{codetype:python}}
+{{filename:greet.py}}
+def greet(name: str) -> None:
+    """Greets a person by name."""
+    print(f"Hello, {name}!")
+    
+if __name__ == "__main__":
+    greet("Alice")
+```
+{{summary: Python greeting function using type annotations and docstrings}}
+
+{{md-description: Explanatory Paragraph After Python Code in Markdown}}
+This Python code sample demonstrates best practices such as type hints and inline documentation, making it both readable and maintainable.
+
+---
+  
+{{md-description: Conclusion Paragraph in Markdown}}
+Thank you for reviewing these examples. This document showcases multiple code block formats along with explanatory texts and meta descriptions for each Markdown element used.
+
+```
